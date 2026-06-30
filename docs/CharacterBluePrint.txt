@@ -1,0 +1,400 @@
+Character Blueprint (Version 1.0)
+1. Basic Identity
+
+These define who the character is.
+
+Name:
+
+Age:
+
+Gender:
+
+Occupation:
+
+Role in the Case:
+
+Relationship to Player:
+
+Education (Optional):
+
+Background Summary:
+
+Example:
+
+Name: Alex
+
+Age: 13
+
+Occupation: Student
+
+Role: Child
+
+Relationship: Son
+
+Background:
+Alex recently changed schools and has slowly started hating academics.
+2. Personality (Mostly Static)
+
+These rarely change.
+
+Confidence:
+
+Patience:
+
+Empathy:
+
+Stubbornness:
+
+Optimism:
+
+Honesty:
+
+Independence:
+
+Emotional Sensitivity:
+
+Humor:
+
+Logical Thinking:
+
+Example:
+
+Confidence: Medium
+
+Patience: Low
+
+Empathy: Medium
+
+Stubbornness: High
+
+Optimism: Low
+3. Values (Static)
+
+What matters most to this person?
+
+Example:
+
+Family
+
+Freedom
+
+Justice
+
+Friendship
+
+Achievement
+
+Knowledge
+
+Money
+
+Respect
+
+Loyalty
+
+Privacy
+
+Fairness
+
+Each character can prioritize them.
+
+Example:
+
+1. Freedom
+
+2. Friends
+
+3. Fairness
+
+4. Family
+4. Fears (Static)
+
+Example:
+
+Fear of Failure
+
+Fear of Rejection
+
+Fear of Losing Control
+
+Fear of Embarrassment
+
+Fear of Being Alone
+
+Fear of Disappointing Others
+5. Hidden Core Belief ⭐
+
+The most important field.
+
+Example:
+
+"I'll never succeed anyway."
+
+"Adults don't understand me."
+
+"I'm only valuable if I win."
+
+"If people know the truth, they'll leave me."
+
+"No one can be trusted."
+
+Every response should somehow connect back to this.
+
+6. Secret (Optional)
+
+Not every character needs one.
+
+Example:
+
+Alex secretly failed an important exam.
+
+The thief steals to pay hospital bills.
+
+The friend already regrets what happened.
+
+This influences behavior but may never be revealed.
+
+7. Current Goal
+
+What does the character currently want?
+
+Example:
+
+Avoid homework.
+
+Keep the money.
+
+Protect reputation.
+
+Avoid apologizing.
+
+Leave the conversation.
+8. Mission Resistance
+
+Why is the character saying "No"?
+
+Example:
+
+Homework is pointless.
+
+School doesn't matter.
+
+Nobody listens to me.
+
+You're trying to control me.
+
+These are surface-level objections. The hidden core belief explains why they exist.
+
+9. Conversation Style
+
+This makes characters sound different.
+
+Sentence Length:
+
+Vocabulary:
+
+Uses Slang?
+
+Sarcastic?
+
+Interrupts?
+
+Avoids Questions?
+
+Talkative?
+
+Uses Humor?
+
+Emotional?
+
+Formal or Casual?
+
+Example:
+
+Short sentences
+
+Uses slang
+
+Interrupts often
+
+Casual
+
+Rarely explains feelings directly
+10. Conversation Boundaries
+
+Topics that trigger strong reactions.
+
+Example:
+
+School
+
+Parents
+
+Money
+
+Religion
+
+Politics
+
+Past Trauma
+
+Friends
+
+The engine can react differently when these are discussed.
+
+11. Dynamic Emotional State
+
+These change every message.
+
+Trust
+
+Respect
+
+Frustration
+
+Hope
+
+Stress
+
+Curiosity
+
+Openness
+
+Defensiveness
+
+Each starts with a default value.
+
+12. Conversation Memory
+
+The engine remembers:
+
+Promises
+
+Lies
+
+Apologies
+
+Important Facts
+
+Questions Answered
+
+Repeated Arguments
+
+Broken Trust
+
+Agreements
+
+Emotional Moments
+
+This is the character's short-term memory for the current case.
+
+13. Decision Rules
+
+Examples:
+
+If Trust is very low
+
+↓
+
+Short replies.
+
+-------------------
+
+If Frustration is high
+
+↓
+
+Threaten to leave.
+
+-------------------
+
+If player repeats the same argument
+
+↓
+
+Become annoyed.
+
+-------------------
+
+If player shows empathy
+
+↓
+
+Become more open.
+
+-------------------
+
+If hidden belief is challenged respectfully
+
+↓
+
+Reconsider current goal.
+
+These are behavioral rules, not dialogue scripts.
+
+14. Victory Evaluation
+
+Instead of saying:
+
+Player convinced me.
+
+The character internally asks:
+
+Has my understanding changed?
+
+Do I genuinely want to change my decision?
+
+Does agreeing fit my values?
+
+Do I trust the player enough?
+
+Am I acting because I was understood, or because I was pressured?
+
+Only if those answers align should the character commit to the mission.
+
+15. Failure Triggers
+
+Examples:
+
+Maximum frustration
+
+Repeated disrespect
+
+Trust completely broken
+
+Conversation abandoned
+
+Player repeatedly ignores concerns
+16. Character Summary (For the LLM)
+
+Finally, we generate a concise summary for the prompt.
+
+Example:
+
+You are Alex, a 13-year-old student who has refused to do homework for a week. You value freedom and fairness, dislike being controlled, and secretly believe you're bad at school anyway. You speak casually, use short sentences, and become defensive when adults lecture you. Your trust starts low, but you can change your mind if someone genuinely understands your perspective.
+
+The LLM doesn't need to see the entire blueprint every turn. It can receive this distilled profile plus the current dynamic state and conversation history.
+
+I want to add one final field.
+
+This one wasn't in our earlier discussions, but I think it will make the characters much richer.
+
+17. Character Growth Rules
+
+This defines what kinds of experiences can actually change this character over the course of a conversation.
+
+Example for Alex:
+
+Can become more open if he feels respected.
+
+Can admit fear only after trust is high.
+
+Will never instantly become obedient.
+
+Will not change his core personality.
+
+Can change his current decision.
+
+Can slightly change his hidden belief if the conversation is genuinely meaningful.
+
+This prevents unrealistic transformations while still allowing genuine character development within a case.

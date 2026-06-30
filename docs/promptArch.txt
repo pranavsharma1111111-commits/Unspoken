@@ -1,0 +1,33 @@
+Prompt Architecture ⭐⭐⭐⭐⭐
+
+This is one of the hardest parts.
+
+We'll decide:
+
+System Prompt
+
+↓
+
+Character Blueprint
+
+↓
+
+Case Data
+
+↓
+
+Current Emotional State
+
+↓
+
+Conversation Memory
+
+↓
+
+Player Message
+
+↓
+
+LLM
+
+Instead of writing one giant prompt.
