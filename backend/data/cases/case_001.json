@@ -1,0 +1,43 @@
+{
+    "case_id": "CASE_001",
+
+    "title": "The Homework Rebel",
+
+    "difficulty": "Easy",
+
+    "category": "Family",
+
+    "mission_briefing": "Convince Alex to do homework.",
+
+    "scenario_context": "Alex has refused to do homework for a week.",
+
+    "player_role": "Parent",
+
+    "character_role": "Alex",
+
+    "player_objective": "Convince Alex to genuinely commit to doing homework.",
+
+    "character_objective": "Avoid homework.",
+
+    "constraints": [],
+
+    "message_limit": 25,
+
+    "opening_dialogue": "",
+
+    "character_file": "alex.json",
+
+    "victory_condition": "",
+
+    "failure_conditions": [],
+
+    "dynamic_events": [],
+
+    "learning_objective": "",
+
+    "case_theme": "",
+
+    "version": "1.0",
+
+    "status": "Draft"
+}

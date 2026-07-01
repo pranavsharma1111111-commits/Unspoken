@@ -1,0 +1,47 @@
+{
+    "name": "Alex",
+    "age": 13,
+    "gender": "Male",
+    "occupation": "Student",
+    "role": "Child",
+    "relationship": "Son",
+
+    "background": "Recently started hating school.",
+
+    "personality": {
+        "stubbornness": "High",
+        "confidence": "Medium",
+        "patience": "Low"
+    },
+
+    "values": [
+        "Freedom",
+        "Friends",
+        "Fairness"
+    ],
+
+    "fears": [
+        "Failure",
+        "Being Controlled"
+    ],
+
+    "hidden_core_belief": "I'm bad at school anyway.",
+
+    "secret": "",
+
+    "current_goal": "Avoid homework",
+
+    "resistance_points": [],
+
+    "conversation_style": {},
+
+    "conversation_boundaries": [],
+
+    "emotional_state": {},
+
+    "conversation_memory": {},
+
+    "decision_rules": [],
+
+    "growth_rules": []
+}

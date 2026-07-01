@@ -39,11 +39,20 @@ state = ConversationState()
 
 engine = ConversationEngine(api_key)
 
-reply = engine.process_message(
+result = engine.process_message(
     alex,
     case,
     state,
-    "Hey Alex, can we talk about your homework?"
+    "Hey Alex, I understand how you feel."
 )
 
-print(reply)
+print(result["reply"])
+
+print("\nAnalysis:")
+print(result["analysis"])
+
+print("\nEvaluation:")
+print(result["evaluation"])
+
+print("\nConversation State:")
+print(result["state"])
