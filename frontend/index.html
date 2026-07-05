@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Unspoken</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;700&family=Kalam:wght@400;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="index.css">
+
+</head>
+
+<body>
+
+<div class="background-overlay"></div>
+
+<!-- ===================== MAIN MENU ===================== -->
+
+<div class="menu-container">
+
+    <header>
+
+        <h1>UNSPOKEN</h1>
+
+        <p class="tagline">
+
+            Understanding is harder than winning.
+
+        </p>
+
+    </header>
+
+    <main>
+
+        <button id="playButton">
+
+            <span class="icon">▶</span>
+
+            <span>START CASE</span>
+
+        </button>
+
+        <button id="casesButton">
+
+            <span class="icon">📖</span>
+
+            <span>CASES</span>
+
+        </button>
+
+        <button>
+
+            <span class="icon">⚙</span>
+
+            <span>SETTINGS</span>
+
+        </button>
+
+        <button>
+
+            <span class="icon">👤</span>
+
+            <span>CREDITS</span>
+
+        </button>
+
+    </main>
+
+    <footer>
+
+        <p>
+
+            Every conversation changes someone.
+
+        </p>
+
+        <small>
+
+            Version 0.1 Alpha
+
+        </small>
+
+    </footer>
+
+</div>
+
+<!-- ===================== CASES OVERLAY ===================== -->
+
+<div id="casesOverlay" class="cases-overlay">
+
+    <div class="cases-window">
+
+        <div class="cases-header">
+
+            <h2>CASES</h2>
+
+            <p>
+
+                Choose a conversation challenge.
+
+            </p>
+
+            <button
+                id="closeCases"
+                class="close-button">
+
+                ✕
+
+            </button>
+
+        </div>
+
+        <div class="cases-list">
+
+            <!-- CASE 001 -->
+
+            <div class="case-card">
+
+                <img src="assets/case001.png"
+                     alt="Case 001">
+
+                <div class="case-content">
+
+                    <span class="case-number">
+
+                        CASE 001
+
+                    </span>
+
+                    <h3>
+
+                        The Homework Rebel
+
+                    </h3>
+
+                    <p>
+
+                        Parents have tried everything.
+
+                        Alex refuses to complete his homework.
+
+                    </p>
+
+                    <div class="case-meta">
+
+                        <span>Difficulty: Easy</span>
+
+                        <span>Theme: Family</span>
+
+                        <span>Character: Alex (13)</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CASE 002 -->
+
+            <div class="case-card locked">
+
+                <img src="assets/case002.png"
+                     alt="Coming Soon">
+
+                <div class="case-content">
+
+                    <span class="case-number">
+
+                        CASE 002
+
+                    </span>
+
+                    <h3>
+
+                        Coming Soon
+
+                    </h3>
+
+                    <p>
+
+                        A new conversation challenge
+                        is on the way.
+
+                    </p>
+
+                    <div class="case-meta">
+
+                        <span>Difficulty: ???</span>
+
+                        <span>Theme: ???</span>
+
+                        <span>Character: ???</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================================== -->
+<!--          BRIEFING OVERLAY                  -->
+<!-- ========================================== -->
+
+<div id="briefingOverlay" class="cases-overlay">
+
+    <div class="cases-window briefing-window">
+
+        <div class="cases-header">
+
+            <button
+                id="closeBriefing"
+                class="close-button">
+
+                ✕
+
+            </button>
+
+            <h2>CASE FILE</h2>
+
+            <p>
+
+                Study the details. Understand the person.
+                Change the outcome.
+
+            </p>
+
+        </div>
+
+
+        <div class="briefing-layout">
+
+            <!-- LEFT -->
+
+            <div class="briefing-left">
+
+                <span class="case-number">
+
+                    CASE 001
+
+                </span>
+
+                <h3>
+
+                    The Homework Rebel
+
+                </h3>
+
+                <img
+                    src="assets/case001.png"
+                    alt="Homework Rebel">
+
+                <div class="briefing-stats">
+
+                    <div>
+
+                        <strong>Difficulty</strong>
+
+                        <span>Easy</span>
+
+                    </div>
+
+                    <div>
+
+                        <strong>Character</strong>
+
+                        <span>Alex (13)</span>
+
+                    </div>
+
+                    <div>
+
+                        <strong>Theme</strong>
+
+                        <span>Family</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT -->
+
+            <div class="briefing-right">
+
+                <section>
+
+                    <h4>Situation</h4>
+
+                    <p>
+
+                        Alex has refused to complete his homework
+                        for over a week.
+
+                        His parents have tried arguing, forcing,
+                        and removing privileges.
+
+                        Nothing has worked.
+
+                    </p>
+
+                </section>
+
+
+                <section>
+
+                    <h4>Your Objective</h4>
+
+                    <ul>
+
+                        <li>
+
+                            Discover why Alex refuses homework.
+
+                        </li>
+
+                        <li>
+
+                            Convince him to willingly begin.
+
+                        </li>
+
+                    </ul>
+
+                </section>
+
+
+                <section>
+
+                    <h4>Mission Rules</h4>
+
+                    <ul>
+
+                        <li>25 Messages</li>
+
+                        <li>No dialogue options</li>
+
+                        <li>Every word matters</li>
+
+                        <li>No correct answers</li>
+
+                    </ul>
+
+                </section>
+
+            </div>
+
+        </div>
+
+
+        <button
+            id="startMissionButton"
+            class="start-mission-button">
+
+            ▶ START CASE
+
+        </button>
+
+    </div>
+
+</div>
+
+<script src="index.js"></script>
+
+</body>
+
+</html>

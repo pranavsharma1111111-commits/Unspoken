@@ -1,0 +1,805 @@
+/* ---------------- RESET ---------------- */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html, body{
+    height:100%;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    color:white;
+    min-height:100vh;
+    overflow-y:auto;      /* was: overflow:hidden — this alone was clipping your footer */
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-image:url("assets/background.png");
+    background-size:cover;      /* was: 100% auto — cover prevents gaps/stretching on tall screens */
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    position:relative;
+}
+
+/* ---------------- DARK OVERLAY ---------------- */
+
+.background-overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(15,12,10,.38);
+    backdrop-filter:blur(1px);
+    z-index:1;
+}
+
+/* ---------------- MAIN CONTAINER ---------------- */
+
+.menu-container{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:900px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding-top:4vh;      /* was: 70px fixed — vh scales with screen instead of eating fixed space */
+    padding-bottom:4vh;
+    animation:fadeIn 1s ease;
+}
+
+/* ---------------- TITLE ---------------- */
+
+header{
+    margin-bottom:35px;   /* was: 55px */
+}
+
+header h1{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(70px,8vw,120px);   /* was: clamp(90px,9vw,150px) — smaller ceiling stops it dominating */
+    letter-spacing:8px;
+    color:#F5F2EB;
+    line-height:1;
+    text-shadow:
+        0 6px 18px rgba(0,0,0,.45),
+        0 0 30px rgba(255,230,170,.18);
+}
+
+.tagline{
+    margin-top:8px;
+    font-family:'Kalam',cursive;
+    font-size:26px;    /* was: 30px */
+    color:#D9A441;
+    text-shadow:
+        0 2px 8px rgba(0,0,0,.35);
+}
+
+/* ---------------- MENU ---------------- */
+
+main{
+    display:flex;
+    flex-direction:column;
+    gap:18px;      /* was: 22px */
+    width:430px;
+}
+
+/* ---------------- BUTTON ---------------- */
+
+main button{
+    height:68px;   /* was: 78px */
+    border:none;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    font-size:30px;    /* was: 34px */
+    font-family:'Kalam',cursive;
+    color:#F5F2EB;
+    background:rgba(18,18,18,.85);
+    border:2px solid rgba(255,255,255,.12);
+    border-radius:8px;
+    transition:.25s;
+    box-shadow:
+        0 10px 20px rgba(0,0,0,.35);
+}
+
+/* ---------------- START BUTTON ---------------- */
+
+#playButton{
+    background:
+        linear-gradient(
+            to bottom,
+            #E4B13C,
+            #C98C19
+        );
+    color:#111;
+    border:none;
+    font-weight:bold;
+    box-shadow:
+        0 12px 28px rgba(218,162,50,.35);
+}
+
+/* ---------------- ICON ---------------- */
+
+.icon{
+    font-size:26px;    /* was: 30px */
+}
+
+/* ---------------- HOVER ---------------- */
+
+main button:hover{
+    transform:
+        translateY(-4px)
+        scale(1.02);
+}
+
+main button:not(#playButton):hover{
+    color:#D8A329;
+    border-color:#D8A329;
+    box-shadow:
+        0 16px 30px rgba(0,0,0,.45);
+}
+
+#playButton:hover{
+    box-shadow:
+        0 18px 38px rgba(218,162,50,.55);
+    filter:brightness(1.05);
+}
+
+/* ---------------- FOOTER ---------------- */
+
+footer{
+    margin-top:40px;   /* was: 65px */
+    text-align:center;
+}
+
+footer p{
+    font-family:'Kalam',cursive;
+    font-size:24px;    /* was: 28px */
+    color:#D8A329;
+    margin-bottom:8px;
+    text-shadow:
+        0 2px 8px rgba(0,0,0,.35);
+}
+
+footer small{
+    color:#D0D0D0;
+    font-size:14px;
+    opacity:.8;
+}
+
+/* ---------------- FADE ---------------- */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ---------------- MOBILE ---------------- */
+
+@media(max-width:768px){
+    header h1{
+        font-size:60px;
+    }
+    .tagline{
+        font-size:18px;
+    }
+    main{
+        width:90%;
+    }
+    main button{
+        font-size:22px;
+        height:60px;
+    }
+}
+/* ===================================================== */
+/*                    CASES OVERLAY                       */
+/* ===================================================== */
+
+.cases-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.55);
+
+    backdrop-filter:blur(8px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.35s ease;
+
+    z-index:100;
+
+}
+
+/* ---------------- SHOW OVERLAY ---------------- */
+
+.cases-overlay.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+/* ---------------- WINDOW ---------------- */
+
+.cases-window{
+
+    width:min(1100px,90vw);
+
+    max-height:85vh;
+
+    overflow-y:auto;
+
+    background:rgba(28,28,28,.92);
+
+    border:2px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    padding:35px;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
+
+    transform:translateY(60px);
+
+    transition:.35s ease;
+
+}
+
+/* Slide Up */
+
+.cases-overlay.show .cases-window{
+
+    transform:translateY(0);
+
+}
+
+/* ===================================================== */
+/*                    HEADER                              */
+/* ===================================================== */
+
+.cases-header{
+
+    position:relative;
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+}
+
+.cases-header h2{
+
+    font-family:'Bebas Neue',sans-serif;
+
+    font-size:64px;
+
+    letter-spacing:3px;
+
+    color:#F5F2EB;
+
+}
+
+.cases-header p{
+
+    font-family:'Kalam',cursive;
+
+    font-size:22px;
+
+    color:#D8A329;
+
+    margin-top:6px;
+
+}
+
+.close-button{
+
+    position:absolute;
+
+    top:0;
+
+    right:0;
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    background:#2d2d2d;
+
+    color:white;
+
+    font-size:22px;
+
+    transition:.25s;
+
+}
+
+.close-button:hover{
+
+    background:#D8A329;
+
+    color:#111;
+
+}
+
+/* ===================================================== */
+/*                     CASE LIST                          */
+/* ===================================================== */
+
+.cases-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+/* ===================================================== */
+/*                    CASE CARD                           */
+/* ===================================================== */
+
+.case-card{
+
+    display:flex;
+
+    gap:28px;
+
+    align-items:center;
+
+    padding:22px;
+
+    border-radius:16px;
+
+    background:#252525;
+
+    border:2px solid transparent;
+
+    cursor:pointer;
+
+    transition:.25s ease;
+
+}
+
+.case-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:#D8A329;
+
+    box-shadow:0 16px 35px rgba(0,0,0,.35);
+
+}
+
+/* ---------------- IMAGE ---------------- */
+
+.case-card img{
+
+    width:240px;
+
+    height:140px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+    transition:.25s ease;
+
+}
+
+.case-card:hover img{
+
+    transform:scale(1.03);
+
+}
+
+/* ===================================================== */
+/*                  CONTENT                               */
+/* ===================================================== */
+
+.case-content{
+
+    flex:1;
+
+}
+
+.case-number{
+
+    display:inline-block;
+
+    font-size:14px;
+
+    letter-spacing:2px;
+
+    color:#D8A329;
+
+    margin-bottom:8px;
+
+}
+
+.case-content h3{
+
+    font-family:'Bebas Neue',sans-serif;
+
+    font-size:42px;
+
+    color:#F5F2EB;
+
+    margin-bottom:10px;
+
+}
+
+.case-content p{
+
+    color:#D3D3D3;
+
+    line-height:1.7;
+
+    margin-bottom:16px;
+
+}
+
+/* ===================================================== */
+/*                     META                               */
+/* ===================================================== */
+
+.case-meta{
+
+    display:flex;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+}
+
+.case-meta span{
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:#333;
+
+    color:#D8A329;
+
+    font-size:14px;
+
+}
+
+/* ===================================================== */
+/*                  LOCKED CARD                           */
+/* ===================================================== */
+
+.locked{
+
+    opacity:.45;
+
+    cursor:not-allowed;
+
+}
+
+.locked:hover{
+
+    transform:none;
+
+    border-color:transparent;
+
+    box-shadow:none;
+
+}
+
+.locked img{
+
+    filter:grayscale(100%);
+
+}
+
+/* ===================================================== */
+/*                 RESPONSIVE                             */
+/* ===================================================== */
+
+@media(max-width:900px){
+
+    .case-card{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .case-card img{
+
+        width:100%;
+
+        height:220px;
+
+    }
+
+    .case-content h3{
+
+        font-size:34px;
+
+    }
+
+}
+/* ===================================================== */
+/*                 BRIEFING OVERLAY                       */
+/* ===================================================== */
+
+.briefing-window{
+
+    width:min(1200px,92vw);
+
+    max-height:90vh;
+
+}
+
+/* ===================================================== */
+/*                BRIEFING LAYOUT                         */
+/* ===================================================== */
+
+.briefing-layout{
+
+    display:grid;
+
+    grid-template-columns:380px 1fr;
+
+    gap:35px;
+
+    margin-top:25px;
+
+}
+
+/* ===================================================== */
+/*                   LEFT PANEL                           */
+/* ===================================================== */
+
+.briefing-left{
+
+    background:#252525;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.briefing-left h3{
+
+    font-family:'Bebas Neue',sans-serif;
+
+    font-size:42px;
+
+    color:#F5F2EB;
+
+    margin:10px 0 20px;
+
+}
+
+.briefing-left img{
+
+    width:100%;
+
+    border-radius:14px;
+
+    margin-bottom:20px;
+
+    box-shadow:0 12px 28px rgba(0,0,0,.35);
+
+}
+
+/* ===================================================== */
+/*                  STATS                                 */
+/* ===================================================== */
+
+.briefing-stats{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.briefing-stats div{
+
+    background:#303030;
+
+    border-radius:12px;
+
+    padding:14px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.briefing-stats strong{
+
+    color:#D8A329;
+
+}
+
+.briefing-stats span{
+
+    color:#F5F2EB;
+
+}
+
+/* ===================================================== */
+/*                  RIGHT PANEL                           */
+/* ===================================================== */
+
+.briefing-right{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+}
+
+.briefing-right section{
+
+    background:#252525;
+
+    border-radius:18px;
+
+    padding:24px;
+
+}
+
+.briefing-right h4{
+
+    font-family:'Bebas Neue',sans-serif;
+
+    font-size:34px;
+
+    color:#D8A329;
+
+    margin-bottom:14px;
+
+    letter-spacing:1px;
+
+}
+
+.briefing-right p{
+
+    color:#DDDDDD;
+
+    line-height:1.8;
+
+    font-size:17px;
+
+}
+
+.briefing-right ul{
+
+    padding-left:22px;
+
+    color:#DDDDDD;
+
+    line-height:2;
+
+}
+
+.briefing-right li{
+
+    margin-bottom:6px;
+
+}
+
+/* ===================================================== */
+/*               START BUTTON                             */
+/* ===================================================== */
+
+.start-mission-button{
+
+    display:block;
+
+    margin:35px auto 10px;
+
+    width:340px;
+
+    height:74px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-family:'Kalam',cursive;
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    background:linear-gradient(
+
+        to bottom,
+
+        #E4B13C,
+
+        #C98C19
+
+    );
+
+    color:#111;
+
+    transition:.25s;
+
+    box-shadow:
+
+        0 12px 28px rgba(216,163,41,.35);
+
+}
+
+.start-mission-button:hover{
+
+    transform:
+
+        translateY(-3px)
+
+        scale(1.02);
+
+    box-shadow:
+
+        0 18px 35px rgba(216,163,41,.45);
+
+}
+
+/* ===================================================== */
+/*                  RESPONSIVE                            */
+/* ===================================================== */
+
+@media(max-width:1000px){
+
+    .briefing-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+}

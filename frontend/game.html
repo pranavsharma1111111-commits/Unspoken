@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unspoken</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="game.css">
+</head>
+
+<body>
+
+    <div class="game-container">
+
+
+        <header class="top-bar">
+            <!-- Exit Button -->
+            <button id="exitButton" class="header-button">
+                ← EXIT CASE
+            </button>
+
+            <!-- Mission Information -->
+            <div class="mission-header">
+                <p class="case-number">CASE 001</p>
+                <h1>The Homework Rebel</h1>
+                <p class="case-meta">Alex • Age 13 • Easy • Family</p>
+            </div>
+
+            <!-- Case File Button -->
+            <button id="caseFileButton" class="header-button">
+                📋 CASE FILE
+            </button>
+        </header>
+
+
+        <main class="main-layout">
+
+
+            <aside class="sidebar">
+
+                <section class="panel">
+                    <h2>CASE INFORMATION</h2>
+                    <div class="divider"></div>
+                    <p><strong>Character:</strong> Alex</p>
+                    <p><strong>Age:</strong> 13</p>
+                    <p><strong>Difficulty:</strong> Easy</p>
+                    <p><strong>Theme:</strong> Family</p>
+                    <div class="divider"></div>
+                    <p>Convince Alex to willingly begin his homework.</p>
+                </section>
+
+                <section class="panel">
+                    <h2>CHARACTER STATE</h2>
+                    <div class="divider"></div>
+
+                    <div class="stat">
+                        <span>Trust</span>
+                        <progress id="trustBar" value="42" max="100"></progress>
+                        <span>42%</span>
+                    </div>
+
+                    <div class="stat">
+                        <span>Frustration</span>
+                        <progress id="frustrationBar" value="28" max="100"></progress>
+                        <span>28%</span>
+                    </div>
+
+                    <div class="stat">
+                        <span>Turn</span>
+                        <span id="turnCounter">6 / 25</span>
+                    </div>
+                </section>
+
+
+
+            </aside>
+
+
+            <section class="chat-section">
+
+                <!-- Chat Messages Container -->
+                <div id="chat" class="chat"></div>
+
+
+                <div class="input-container">
+                    <input id="messageInput" type="text" placeholder="Type your message...">
+                    <button id="attachmentButton">📎</button>
+                    <button id="sendButton">SEND</button>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+    <script src="game.js"></script>
+</body>
+
+</html>

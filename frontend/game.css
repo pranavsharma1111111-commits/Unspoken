@@ -1,0 +1,758 @@
+/* ======================================================
+   GLOBAL RESET & BASE STYLES
+   ====================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #F5F2EB;
+    background-image: url("assets/background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 8, 6, 0.7);
+    backdrop-filter: blur(3px);
+    z-index: 0;
+}
+
+
+/* ======================================================
+   MAIN GAME CONTAINER
+   ====================================================== */
+
+.game-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+
+/* ======================================================
+   TOP BAR / HEADER
+   ====================================================== */
+
+.top-bar {
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    align-items: center;
+    gap: 24px;
+    padding: 20px 32px;
+    border-radius: 16px;
+    background: rgba(15, 15, 18, 0.85);
+    border: 1px solid rgba(216, 163, 41, 0.2);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.header-button {
+    height: 56px;
+    padding: 0 24px;
+    border: 1px solid rgba(216, 163, 41, 0.25);
+    border-radius: 12px;
+    background: rgba(20, 20, 24, 0.9);
+    color: #D8A329;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.header-button:hover {
+    background: rgba(216, 163, 41, 0.15);
+    border-color: #D8A329;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(216, 163, 41, 0.2);
+}
+
+#exitButton {
+    justify-self: start;
+}
+
+#caseFileButton {
+    justify-self: end;
+}
+
+
+/* ======================================================
+   MISSION HEADER (CENTER)
+   ====================================================== */
+
+.mission-header {
+    text-align: center;
+}
+
+.case-number {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: #D8A329;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.mission-header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    color: #FFFFFF;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.case-meta {
+    font-family: 'Kalam', cursive;
+    font-size: 16px;
+    color: #B8B8B8;
+    letter-spacing: 0.5px;
+}
+
+
+/* ======================================================
+   MAIN LAYOUT
+   ====================================================== */
+
+.main-layout {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 20px;
+    min-height: 0;
+}
+
+
+/* ======================================================
+   SIDEBAR
+   ====================================================== */
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(216, 163, 41, 0.3);
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(216, 163, 41, 0.5);
+}
+
+
+/* ======================================================
+   PANEL / CARD COMPONENT
+   ====================================================== */
+
+.panel {
+    background: rgba(18, 18, 22, 0.88);
+    border: 1px solid rgba(216, 163, 41, 0.18);
+    border-radius: 16px;
+    padding: 22px;
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+}
+
+.panel:hover {
+    border-color: rgba(216, 163, 41, 0.35);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.panel h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    color: #D8A329;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(216, 163, 41, 0.25);
+    margin: 14px 0;
+}
+
+.panel p {
+    color: #D4D4D4;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.panel strong {
+    color: #F5F2EB;
+    font-weight: 600;
+}
+
+
+/* ======================================================
+   CHARACTER STATE STATS
+   ====================================================== */
+
+.stat {
+    display: grid;
+    grid-template-columns: 70px 1fr 50px;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.stat span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #D4D4D4;
+}
+
+.stat span:last-child {
+    text-align: right;
+    color: #D8A329;
+    font-weight: 700;
+}
+
+
+/* ======================================================
+   PROGRESS BARS
+   ====================================================== */
+
+progress {
+    width: 100%;
+    height: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #2A2A2E;
+}
+
+progress::-webkit-progress-bar {
+    background: #2A2A2E;
+    border-radius: 999px;
+}
+
+progress::-webkit-progress-value {
+    background: linear-gradient(to right, #D8A329, #F4C44D);
+    border-radius: 999px;
+}
+
+progress::-moz-progress-bar {
+    background: linear-gradient(to right, #D8A329, #F4C44D);
+    border-radius: 999px;
+}
+
+#frustrationBar::-webkit-progress-value {
+    background: linear-gradient(to right, #E74C3C, #F39C12);
+}
+
+#frustrationBar::-moz-progress-bar {
+    background: linear-gradient(to right, #E74C3C, #F39C12);
+}
+
+
+/* ======================================================
+   MISSION STATUS INDICATORS
+   ====================================================== */
+
+#turnCounter {
+    color: #F5F2EB;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+#currentMood,
+#objectiveProgress {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(216, 163, 41, 0.12);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#currentMood {
+    color: #D8A329;
+}
+
+#objectiveProgress {
+    color: #F5F2EB;
+}
+
+
+/* ======================================================
+   MISSION STATEMENT BOX
+   ====================================================== */
+
+.mission-statement {
+    margin-top: auto;
+    padding: 24px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #9B8B6B 0%, #7A6F5D 100%);
+    border: 1px solid rgba(255, 200, 100, 0.2);
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.mission-statement:hover {
+    transform: translateY(-2px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.mission-statement::before {
+    content: "❝";
+    display: block;
+    font-size: 48px;
+    color: rgba(255, 255, 255, 0.2);
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.mission-statement p {
+    font-family: 'Kalam', cursive;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #2A2420;
+    margin: 0;
+    font-weight: 400;
+}
+
+
+/* ======================================================
+   CHAT SECTION
+   ====================================================== */
+
+.chat-section {
+    display: flex;
+    flex-direction: column;
+    background: rgba(15, 15, 18, 0.85);
+    border: 1px solid rgba(216, 163, 41, 0.15);
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    padding: 20px;
+    min-height: 0;
+    gap: 16px;
+}
+
+.chat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    padding: 8px 4px;
+    scroll-behavior: smooth;
+}
+
+.chat::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chat::-webkit-scrollbar-thumb {
+    background: rgba(216, 163, 41, 0.3);
+    border-radius: 4px;
+}
+
+.chat::-webkit-scrollbar-thumb:hover {
+    background: rgba(216, 163, 41, 0.5);
+}
+
+
+/* ======================================================
+   MESSAGE BUBBLE STYLES
+   ====================================================== */
+
+.message {
+    display: flex;
+    width: 100%;
+    animation: slideIn 0.3s ease;
+}
+
+.player {
+    justify-content: flex-end;
+}
+
+.player .bubble {
+    background: linear-gradient(135deg, #3A5A7F, #2A4560);
+    color: #E8F0FF;
+    border-bottom-right-radius: 4px;
+    border: 1px solid rgba(100, 150, 200, 0.3);
+}
+
+.ai {
+    justify-content: flex-start;
+}
+
+.ai .bubble {
+    background: rgba(30, 30, 35, 0.95);
+    color: #D4D4D4;
+    border-bottom-left-radius: 4px;
+    border: 1px solid rgba(216, 163, 41, 0.15);
+}
+
+.system {
+    justify-content: center;
+}
+
+.system .bubble {
+    background: rgba(216, 163, 41, 0.12);
+    border: 1px solid rgba(216, 163, 41, 0.35);
+    color: #F4C44D;
+    text-align: center;
+}
+
+.bubble {
+    max-width: 65%;
+    padding: 14px 18px;
+    border-radius: 16px;
+    line-height: 1.5;
+    font-size: 16px;
+    word-break: break-word;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.message-name {
+    font-size: 12px;
+    font-weight: 700;
+    opacity: 0.7;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.message-time {
+    margin-top: 6px;
+    font-size: 11px;
+    opacity: 0.5;
+    text-align: right;
+}
+
+
+/* ======================================================
+   TYPING INDICATOR
+   ====================================================== */
+
+.typing {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    width: fit-content;
+    padding: 12px 16px;
+    border-radius: 16px;
+    background: rgba(30, 30, 35, 0.95);
+    border: 1px solid rgba(216, 163, 41, 0.15);
+}
+
+.typing span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #D8A329;
+    animation: bounce 1.4s infinite;
+}
+
+.typing span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+
+/* ======================================================
+   INPUT CONTAINER
+   ====================================================== */
+
+.input-container {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 8px;
+}
+
+#messageInput {
+    flex: 1;
+    height: 54px;
+    padding: 0 18px;
+    background: rgba(20, 20, 24, 0.9);
+    border: 1px solid rgba(216, 163, 41, 0.18);
+    border-radius: 12px;
+    color: #F5F2EB;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+}
+
+#messageInput:focus {
+    outline: none;
+    border-color: rgba(216, 163, 41, 0.4);
+    box-shadow: 0 0 12px rgba(216, 163, 41, 0.1);
+    background: rgba(25, 25, 30, 0.95);
+}
+
+#messageInput::placeholder {
+    color: rgba(245, 242, 235, 0.45);
+}
+
+#attachmentButton {
+    height: 54px;
+    width: 54px;
+    border: 1px solid rgba(216, 163, 41, 0.18);
+    border-radius: 12px;
+    background: rgba(20, 20, 24, 0.9);
+    color: #D8A329;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#attachmentButton:hover {
+    border-color: #D8A329;
+    background: rgba(216, 163, 41, 0.12);
+    transform: translateY(-2px);
+}
+
+#sendButton {
+    height: 54px;
+    padding: 0 28px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #D8A329, #F4C44D);
+    color: #1A1410;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 0 4px 16px rgba(216, 163, 41, 0.3);
+}
+
+#sendButton:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(216, 163, 41, 0.4);
+}
+
+#sendButton:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+#sendButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/* ======================================================
+   ANIMATIONS
+   ====================================================== */
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 80%, 100% {
+        transform: scale(0.8);
+        opacity: 0.6;
+    }
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* ======================================================
+   RESPONSIVE DESIGN
+   ====================================================== */
+
+@media (max-width: 1200px) {
+    .main-layout {
+        grid-template-columns: 280px 1fr;
+    }
+
+    .mission-header h1 {
+        font-size: 48px;
+    }
+
+    .bubble {
+        max-width: 70%;
+    }
+}
+
+@media (max-width: 768px) {
+    .game-container {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .top-bar {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 16px 20px;
+    }
+
+    .mission-header h1 {
+        font-size: 36px;
+    }
+
+    .main-layout {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    .mission-statement {
+        grid-column: 1 / -1;
+    }
+
+    .bubble {
+        max-width: 80%;
+        font-size: 14px;
+        padding: 12px 16px;
+    }
+
+    .header-button {
+        height: 48px;
+        font-size: 14px;
+        padding: 0 18px;
+    }
+
+    #messageInput,
+    #attachmentButton,
+    #sendButton {
+        height: 48px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-container {
+        padding: 12px;
+    }
+
+    .top-bar {
+        padding: 12px 16px;
+        border-radius: 12px;
+    }
+
+    .mission-header h1 {
+        font-size: 28px;
+    }
+
+    .case-number {
+        font-size: 11px;
+    }
+
+    .case-meta {
+        font-size: 13px;
+    }
+
+    .main-layout {
+        gap: 12px;
+    }
+
+    .sidebar {
+        grid-template-columns: 1fr;
+        max-height: none;
+    }
+
+    .chat-section {
+        border-radius: 12px;
+        padding: 16px;
+    }
+
+    .bubble {
+        max-width: 85%;
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+
+    .input-container {
+        gap: 8px;
+    }
+
+    #messageInput {
+        font-size: 14px;
+    }
+
+    #attachmentButton {
+        width: 48px;
+        font-size: 16px;
+    }
+
+    #sendButton {
+        padding: 0 18px;
+        font-size: 13px;
+    }
+}
