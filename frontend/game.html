@@ -62,18 +62,18 @@
                     <div class="stat">
                         <span>Trust</span>
                         <progress id="trustBar" value="42" max="100"></progress>
-                        <span>42%</span>
+                        <span>50%</span>
                     </div>
 
                     <div class="stat">
                         <span>Frustration</span>
                         <progress id="frustrationBar" value="28" max="100"></progress>
-                        <span>28%</span>
+                        <span>0%</span>
                     </div>
 
                     <div class="stat">
                         <span>Turn</span>
-                        <span id="turnCounter">6 / 25</span>
+                        <span id="turnCounter">0 / 25</span>
                     </div>
                 </section>
 
@@ -99,6 +99,153 @@
         </main>
 
     </div>
+
+<div id="exitOverlay" class="overlay">
+
+    <div class="overlay-card">
+
+        <h2>
+
+            Exit Case
+
+        </h2>
+
+        <p>
+
+            Your current progress will be lost.
+
+        </p>
+
+        <p class="overlay-warning">
+
+            Are you sure you want to leave?
+
+        </p>
+
+        <div class="overlay-buttons">
+
+            <button id="cancelExit">
+
+                Cancel
+
+            </button>
+
+            <button id="confirmExit">
+
+                Exit Case
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<div id="missionCompleteOverlay" class="overlay">
+
+    <div class="overlay-card mission-complete-card">
+
+        <div id="missionIcon" class="mission-icon">
+
+    ✓
+
+</div>
+
+        <h2 id="missionTitle">
+
+    MISSION RESULT
+
+</h2>
+
+        <p id="missionEnding" class="mission-ending">
+
+            Alex quietly opens his notebook and begins the first question.
+
+        </p>
+
+        <div class="mission-stats">
+
+            <div class="mission-stat">
+
+                <h3>
+
+                    Final Trust
+
+                </h3>
+
+                <span id="missionTrust">
+
+                    84%
+
+                </span>
+
+            </div>
+
+            <div class="mission-stat">
+
+                <h3>
+
+                    Final Frustration
+
+                </h3>
+
+                <span id="missionFrustration">
+
+                    12%
+
+                </span>
+
+            </div>
+
+            <div class="mission-stat">
+
+                <h3>
+
+                    Turns Used
+
+                </h3>
+
+                <span id="missionTurns">
+
+                    17 / 25
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="mission-summary">
+
+            <h3>
+
+                Conversation Summary
+
+            </h3>
+
+            <p id="missionSummary">
+
+                You acknowledged Alex's frustration before encouraging him to reconsider homework.
+
+            </p>
+
+        </div>
+
+        <blockquote id="missionQuote">
+
+            "Sometimes people don't need more pressure. They need someone who listens."
+
+        </blockquote>
+
+        <button id="returnMenuButton">
+
+            RETURN TO MENU
+
+        </button>
+
+    </div>
+
+</div>
     <script src="game.js"></script>
 </body>
 

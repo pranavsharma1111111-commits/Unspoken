@@ -1,7 +1,3 @@
-// =====================================================
-// DOM ELEMENTS
-// =====================================================
-
 const chat = document.getElementById("chat");
 
 const messageInput = document.getElementById("messageInput");
@@ -20,10 +16,27 @@ const exitButton = document.getElementById("exitButton");
 
 const caseFileButton = document.getElementById("caseFileButton");
 
+const exitOverlay = document.getElementById("exitOverlay");
 
-// =====================================================
-// GAME STATE
-// =====================================================
+const cancelExit = document.getElementById("cancelExit");
+
+const confirmExit = document.getElementById("confirmExit");
+
+const missionCompleteOverlay = document.getElementById("missionCompleteOverlay");
+
+const missionTitle = document.getElementById("missionTitle");
+
+const missionEnding = document.getElementById("missionEnding");
+
+const missionTrust = document.getElementById("missionTrust");
+
+const missionFrustration = document.getElementById("missionFrustration");
+
+const missionTurns = document.getElementById("missionTurns");
+
+const missionQuote = document.getElementById("missionQuote");
+
+const returnMenuButton = document.getElementById("returnMenuButton");
 
 let trust = 50;
 
@@ -35,9 +48,7 @@ const maxTurns = 25;
 
 let gameEnded = false;
 
-// =====================================================
-// START GAME
-// =====================================================
+const DEV_MODE = true;
 
 window.addEventListener("load", initializeGame);
 
@@ -81,10 +92,6 @@ async function initializeGame(){
 
 }
 
-// =====================================================
-// EVENTS
-// =====================================================
-
 sendButton.addEventListener(
 
     "click",
@@ -108,10 +115,6 @@ messageInput.addEventListener(
     }
 
 );
-
-// =====================================================
-// SEND MESSAGE
-// =====================================================
 
 async function sendMessage(){
 
@@ -179,31 +182,39 @@ async function sendMessage(){
 
         updateUI();
 
-        if(data.conversation_ended){
+        if(data.conversation_ended && !data.mission_complete){
 
-            gameEnded = true;
+    setTimeout(
 
-            messageInput.disabled = true;
+        function(){
 
-            sendButton.disabled = true;
+            showMissionResult(false);
 
-            addSystemMessage(
+        },
 
-                "Conversation Ended."
+        1000
 
-            );
+    );
 
-        }
+}
 
-        if(data.mission_complete){
+if(data.mission_complete){
 
-            addSystemMessage(
+    setTimeout(
 
-                "Mission Complete!"
+        function(){
 
-            );
+            showMissionResult(true);
 
-        }
+        },
+
+        1000
+
+    );
+
+}
+
+      
 
     }
 
@@ -221,6 +232,8 @@ async function sendMessage(){
 
     finally{
 
+    if(!gameEnded){
+
         sendButton.disabled = false;
 
         messageInput.focus();
@@ -229,9 +242,7 @@ async function sendMessage(){
 
 }
 
-// =====================================================
-// MESSAGE FUNCTIONS
-// =====================================================
+}
 
 function addPlayerMessage(message){
 
@@ -275,7 +286,7 @@ function addSystemMessage(message){
 
 }
 
-function createMessage(sender,message,type){
+function createMessage(sender, message, type){
 
     const row = document.createElement("div");
 
@@ -293,21 +304,19 @@ function createMessage(sender,message,type){
 
     else{
 
-        bubble.innerHTML = `
+        const name = document.createElement("div");
 
-            <div class="message-name">
+        name.className = "message-name";
 
-                ${sender}
+        name.textContent = sender;
 
-            </div>
+        const text = document.createElement("div");
 
-            <div>
+        text.textContent = message;
 
-                ${message}
+        bubble.appendChild(name);
 
-            </div>
-
-        `;
+        bubble.appendChild(text);
 
     }
 
@@ -359,10 +368,6 @@ function hideTyping(){
 
 }
 
-// =====================================================
-// UI
-// =====================================================
-
 function updateUI(){
 
     trustBar.value = trust;
@@ -376,5 +381,186 @@ function updateUI(){
 function scrollChat(){
 
     chat.scrollTop = chat.scrollHeight;
+
+}
+
+exitButton.addEventListener(
+
+    "click",
+
+    function(){
+
+        exitOverlay.classList.add("show");
+
+    }
+
+);
+
+cancelExit.onclick = function(){
+
+    exitOverlay.classList.remove("show");
+
+};
+
+confirmExit.onclick = function(){
+
+    window.location.href = "index.html";
+
+};
+
+function showMissionResult(success){
+
+    messageInput.disabled = true;
+
+    sendButton.disabled = true;
+
+    attachmentButton.disabled = true;
+
+    gameEnded = true;
+
+    if(success){
+
+        missionTitle.textContent = "MISSION COMPLETE";
+
+        missionEnding.textContent =
+            "Alex quietly opens his notebook and begins the first question.";
+
+        missionQuote.textContent =
+            "\"Sometimes people don't need more pressure. They need someone who listens.\"";
+
+    }
+
+    else{
+
+        missionTitle.textContent = "MISSION FAILED";
+
+        missionEnding.textContent =
+            "Alex walks away without starting his homework.";
+
+        missionQuote.textContent =
+            "\"Understanding someone is harder than winning an argument.\"";
+
+    }
+
+    missionTrust.textContent =
+        trust + "%";
+
+    missionFrustration.textContent =
+        frustration + "%";
+
+    missionTurns.textContent =
+        `${currentTurn} / ${maxTurns}`;
+
+    missionCompleteOverlay.classList.add("show");
+
+}
+
+returnMenuButton.addEventListener(
+
+    "click",
+
+    function(){
+
+        window.location.href = "index.html";
+
+    }
+
+);
+
+if(DEV_MODE){
+
+    document.addEventListener(
+
+        "keydown",
+
+        function(event){
+
+            if(!event.altKey){
+
+                return;
+
+            }
+
+            switch(event.key){
+
+                case "1":
+
+                    trust = 100;
+
+                    frustration = 0;
+
+                    currentTurn = 15;
+
+                    updateUI();
+
+                    showMissionResult(true);
+
+                    break;
+
+                case "2":
+
+                    trust = 10;
+
+                    frustration = 100;
+
+                    currentTurn = 25;
+
+                    updateUI();
+
+                    showMissionResult(false);
+
+                    break;
+
+                case "3":
+
+                    trust = 100;
+
+                    updateUI();
+
+                    console.log("Trust set to 100");
+
+                    break;
+
+                case "4":
+
+                    frustration = 100;
+
+                    updateUI();
+
+                    console.log("Frustration set to 100");
+
+                    break;
+
+                case "5":
+
+                    currentTurn = 24;
+
+                    updateUI();
+
+                    console.log("Jumped to Turn 24");
+
+                    break;
+
+                case "6":
+
+                    console.log({
+
+                        trust,
+
+                        frustration,
+
+                        currentTurn,
+
+                        gameEnded
+
+                    });
+
+                    break;
+
+            }
+
+        }
+
+    );
 
 }

@@ -1,6 +1,4 @@
-// =====================================
-// ELEMENTS
-// =====================================
+
 
 const playButton = document.getElementById("playButton");
 
@@ -18,10 +16,17 @@ const closeBriefingButton = document.getElementById("closeBriefing");
 
 const startMissionButton = document.getElementById("startMissionButton");
 
+const settingsButton = document.getElementById("settingsButton");
 
-// =====================================
-// OPEN CASES
-// =====================================
+const settingsOverlay = document.getElementById("settingsOverlay");
+
+const closeSettingsButton = document.getElementById("closeSettings");
+
+const saveSettingsButton = document.getElementById("saveSettings");
+
+const clearSettingsButton = document.getElementById("clearSettings");
+
+const apiKeyInput = document.getElementById("apiKeyInput");
 
 function openCases(){
 
@@ -30,9 +35,6 @@ function openCases(){
 }
 
 
-// =====================================
-// CLOSE CASES
-// =====================================
 
 function closeCases(){
 
@@ -41,9 +43,7 @@ function closeCases(){
 }
 
 
-// =====================================
-// OPEN BRIEFING
-// =====================================
+
 
 function openBriefing(){
 
@@ -54,9 +54,6 @@ function openBriefing(){
 }
 
 
-// =====================================
-// CLOSE BRIEFING
-// =====================================
 
 function closeBriefing(){
 
@@ -67,27 +64,20 @@ function closeBriefing(){
 }
 
 
-// =====================================
-// MENU BUTTONS
-// =====================================
+
 
 playButton.addEventListener("click", openCases);
 
 casesButton.addEventListener("click", openCases);
 
 
-// =====================================
-// CLOSE BUTTONS
-// =====================================
 
 closeCasesButton.addEventListener("click", closeCases);
 
 closeBriefingButton.addEventListener("click", closeBriefing);
 
 
-// =====================================
-// CLICK OUTSIDE
-// =====================================
+
 
 casesOverlay.addEventListener("click", function(event){
 
@@ -110,9 +100,7 @@ briefingOverlay.addEventListener("click", function(event){
 });
 
 
-// =====================================
-// ESC KEY
-// =====================================
+
 
 document.addEventListener("keydown", function(event){
 
@@ -122,24 +110,27 @@ document.addEventListener("keydown", function(event){
 
     }
 
-    if(briefingOverlay.classList.contains("show")){
+    if(settingsOverlay.classList.contains("show")){
 
-        closeBriefing();
+    closeSettings();
 
-    }
+}
 
-    else if(casesOverlay.classList.contains("show")){
+else if(briefingOverlay.classList.contains("show")){
 
-        closeCases();
+    closeBriefing();
 
-    }
+}
+
+else if(casesOverlay.classList.contains("show")){
+
+    closeCases();
+
+}
 
 });
 
 
-// =====================================
-// CASE CLICK
-// =====================================
 
 caseCards.forEach(function(card){
 
@@ -158,12 +149,164 @@ caseCards.forEach(function(card){
 });
 
 
-// =====================================
-// START MISSION
-// =====================================
-
 startMissionButton.addEventListener("click", function(){
 
     window.location.href = "game.html";
 
 });
+
+function openSettings(){
+
+    settingsOverlay.classList.add("show");
+
+}
+
+function closeSettings(){
+
+    settingsOverlay.classList.remove("show");
+
+}
+
+settingsButton.addEventListener(
+
+    "click",
+
+    openSettings
+
+);
+
+closeSettingsButton.addEventListener(
+
+    "click",
+
+    closeSettings
+
+);
+
+settingsOverlay.addEventListener(
+
+    "click",
+
+    function(event){
+
+        if(event.target === settingsOverlay){
+
+            closeSettings();
+
+        }
+
+    }
+
+);
+async function saveApiKey(){
+
+    const apiKey = apiKeyInput.value.trim();
+
+    if(apiKey === ""){
+
+        alert("Please enter a Gemini API key.");
+
+        return;
+
+    }
+
+    try{
+
+        const response = await fetch(
+
+            "http://127.0.0.1:8000/set-api-key",
+
+            {
+
+                method:"POST",
+
+                headers:{
+
+                    "Content-Type":"application/json"
+
+                },
+
+                body:JSON.stringify({
+
+                    api_key:apiKey
+
+                })
+
+            }
+
+        );
+
+        if(!response.ok){
+
+            throw new Error();
+
+        }
+
+        localStorage.setItem(
+
+            "gemini_api_key",
+
+            apiKey
+
+        );
+
+        alert("API key saved successfully.");
+
+        closeSettings();
+
+    }
+
+    catch(error){
+
+        alert("Unable to connect to the server.");
+
+    }
+
+}
+function loadApiKey(){
+
+    const savedKey = localStorage.getItem(
+
+        "gemini_api_key"
+
+    );
+
+    if(savedKey){
+
+        apiKeyInput.value = savedKey;
+
+    }
+
+}
+
+function clearApiKey(){
+
+    localStorage.removeItem(
+
+        "gemini_api_key"
+
+    );
+
+    apiKeyInput.value = "";
+
+    alert("API key removed.");
+
+}
+
+saveSettingsButton.addEventListener(
+
+    "click",
+
+    saveApiKey
+
+);
+
+clearSettingsButton.addEventListener(
+
+    "click",
+
+    clearApiKey
+
+);
+
+loadApiKey();

@@ -1,6 +1,3 @@
-/* ======================================================
-   GLOBAL RESET & BASE STYLES
-   ====================================================== */
 
 * {
     margin: 0;
@@ -36,10 +33,6 @@ body::before {
 }
 
 
-/* ======================================================
-   MAIN GAME CONTAINER
-   ====================================================== */
-
 .game-container {
     position: relative;
     z-index: 1;
@@ -50,11 +43,6 @@ body::before {
     flex-direction: column;
     gap: 16px;
 }
-
-
-/* ======================================================
-   TOP BAR / HEADER
-   ====================================================== */
 
 .top-bar {
     display: grid;
@@ -99,10 +87,6 @@ body::before {
 }
 
 
-/* ======================================================
-   MISSION HEADER (CENTER)
-   ====================================================== */
-
 .mission-header {
     text-align: center;
 }
@@ -134,10 +118,6 @@ body::before {
 }
 
 
-/* ======================================================
-   MAIN LAYOUT
-   ====================================================== */
-
 .main-layout {
     flex: 1;
     display: grid;
@@ -146,10 +126,6 @@ body::before {
     min-height: 0;
 }
 
-
-/* ======================================================
-   SIDEBAR
-   ====================================================== */
 
 .sidebar {
     display: flex;
@@ -176,10 +152,6 @@ body::before {
     background: rgba(216, 163, 41, 0.5);
 }
 
-
-/* ======================================================
-   PANEL / CARD COMPONENT
-   ====================================================== */
 
 .panel {
     background: rgba(18, 18, 22, 0.88);
@@ -226,9 +198,6 @@ body::before {
 }
 
 
-/* ======================================================
-   CHARACTER STATE STATS
-   ====================================================== */
 
 .stat {
     display: grid;
@@ -251,9 +220,6 @@ body::before {
 }
 
 
-/* ======================================================
-   PROGRESS BARS
-   ====================================================== */
 
 progress {
     width: 100%;
@@ -290,9 +256,6 @@ progress::-moz-progress-bar {
 }
 
 
-/* ======================================================
-   MISSION STATUS INDICATORS
-   ====================================================== */
 
 #turnCounter {
     color: #F5F2EB;
@@ -319,10 +282,6 @@ progress::-moz-progress-bar {
     color: #F5F2EB;
 }
 
-
-/* ======================================================
-   MISSION STATEMENT BOX
-   ====================================================== */
 
 .mission-statement {
     margin-top: auto;
@@ -359,9 +318,6 @@ progress::-moz-progress-bar {
 }
 
 
-/* ======================================================
-   CHAT SECTION
-   ====================================================== */
 
 .chat-section {
     display: flex;
@@ -403,9 +359,6 @@ progress::-moz-progress-bar {
 }
 
 
-/* ======================================================
-   MESSAGE BUBBLE STYLES
-   ====================================================== */
 
 .message {
     display: flex;
@@ -474,10 +427,6 @@ progress::-moz-progress-bar {
 }
 
 
-/* ======================================================
-   TYPING INDICATOR
-   ====================================================== */
-
 .typing {
     display: flex;
     gap: 5px;
@@ -509,10 +458,6 @@ progress::-moz-progress-bar {
     animation-delay: 0.4s;
 }
 
-
-/* ======================================================
-   INPUT CONTAINER
-   ====================================================== */
 
 .input-container {
     display: flex;
@@ -598,10 +543,6 @@ progress::-moz-progress-bar {
 }
 
 
-/* ======================================================
-   ANIMATIONS
-   ====================================================== */
-
 @keyframes slideIn {
     from {
         opacity: 0;
@@ -625,9 +566,6 @@ progress::-moz-progress-bar {
 }
 
 
-/* ======================================================
-   RESPONSIVE DESIGN
-   ====================================================== */
 
 @media (max-width: 1200px) {
     .main-layout {
@@ -755,4 +693,449 @@ progress::-moz-progress-bar {
         padding: 0 18px;
         font-size: 13px;
     }
+}
+.overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.55);
+
+    backdrop-filter:blur(6px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.25s ease;
+
+    z-index:1000;
+
+}
+
+.overlay.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+.overlay-card{
+
+    width:90%;
+
+    max-width:520px;
+
+    padding:36px;
+
+    border-radius:22px;
+
+    background:rgba(20,20,22,.96);
+
+    border:1px solid rgba(216,163,41,.25);
+
+    text-align:center;
+
+    transform:scale(.92);
+
+    transition:.25s ease;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.45);
+
+}
+.overlay.show .overlay-card{
+
+    transform:scale(1);
+
+}
+.overlay-card h2{
+
+    font-family:'Bebas Neue',sans-serif;
+
+    font-size:44px;
+
+    letter-spacing:2px;
+
+    color:#F5F2EB;
+
+    margin-bottom:18px;
+
+}
+.overlay-card p{
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    color:#D7D7D7;
+
+}
+.overlay-warning{
+
+    margin-top:14px;
+
+    color:#D8A329;
+
+    font-weight:700;
+
+}
+.overlay-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    margin-top:34px;
+
+}
+.overlay-buttons button{
+
+    min-width:160px;
+
+    height:56px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    transition:.25s ease;
+
+}
+#cancelExit{
+
+    background:#2F2F2F;
+
+    color:#F5F2EB;
+
+    border:1px solid rgba(255,255,255,.10);
+
+}
+#cancelExit:hover{
+
+    background:#3B3B3B;
+
+}
+#confirmExit{
+
+    background: linear-gradient(
+    to bottom,
+    #E4B13C,
+    #C98C19
+);
+
+    color:white;
+
+}
+#confirmExit:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+
+        0 10px 24px rgba(209, 220, 9, 0.35);
+
+}
+.mission-complete-card{
+
+    width:min(760px,92vw);
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    padding:45px;
+
+    border-radius:22px;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(28,28,28,.98),
+            rgba(18,18,18,.98)
+        );
+
+    border:1px solid rgba(216,163,41,.35);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.55);
+
+}
+
+.mission-icon{
+
+    width:70px;
+
+    height:70px;
+
+    font-size:42px;
+
+    margin:0 auto 16px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-weight:bold;
+
+    color:#111;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #F2C14E,
+            #D8A329
+        );
+
+    box-shadow:
+        0 0 30px rgba(216,163,41,.35);
+
+}
+
+#missionTitle{
+
+    font-family:'Bebas Neue',sans-serif;
+
+    font-size:56px;
+
+    margin-bottom:10px;
+
+    letter-spacing:3px;
+
+    color:#F5F2EB;
+
+    margin-bottom:18px;
+
+}
+
+.mission-divider{
+
+    color:#D8A329;
+
+    font-size:22px;
+
+    margin-bottom:28px;
+
+}
+
+.mission-ending{
+
+    font-size:22px;
+
+    margin-bottom:24px;
+
+    line-height:1.5;
+
+}
+
+.mission-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px;
+
+    margin-bottom:35px;
+
+}
+
+.mission-stat{
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(216,163,41,.20);
+
+    border-radius:16px;
+
+    padding:16px 12px;
+
+    transition:.25s;
+
+}
+
+.mission-stat:hover{
+
+    transform:translateY(-3px);
+
+    border-color:#D8A329;
+
+    box-shadow:0 12px 28px rgba(0,0,0,.30);
+
+}
+
+.mission-stat h3{
+
+    font-size:16px;
+
+    font-weight:500;
+
+    color:#BEBEBE;
+
+    margin-bottom:12px;
+
+}
+
+.mission-stat span{
+
+    display:block;
+
+    font-family:'Bebas Neue',sans-serif;
+
+    font-size:34px;
+
+    letter-spacing:1px;
+
+    color:#D8A329;
+
+}
+.mission-summary{
+
+    text-align:left;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(216,163,41,.15);
+
+    border-radius:18px;
+
+    padding:24px;
+
+    margin-bottom:28px;
+
+}
+
+.mission-summary h3{
+
+    font-family:'Bebas Neue',sans-serif;
+
+    font-size:32px;
+
+    letter-spacing:1px;
+
+    color:#D8A329;
+
+    margin-bottom:14px;
+
+}
+
+.mission-summary p{
+
+    color:#E6E6E6;
+
+    line-height:1.8;
+
+    font-size:17px;
+
+}
+#missionQuote{
+
+    margin:30px auto 35px;
+
+    max-width:560px;
+
+    font-family:'Kalam',cursive;
+
+    font-size:18px;
+
+margin:18px auto 24px;
+
+    line-height:1.8;
+
+    color:#D8A329;
+
+    opacity:.95;
+
+}
+#returnMenuButton{
+
+    width:320px;
+
+    height:58px;
+
+font-size:24px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-family:'Kalam',cursive;
+
+    font-weight:bold;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #E4B13C,
+            #C98C19
+        );
+
+    color:#111;
+
+    transition:.25s;
+
+    box-shadow:
+        0 12px 28px rgba(216,163,41,.35);
+
+}
+
+#returnMenuButton:hover{
+
+    transform:
+        translateY(-3px)
+        scale(1.02);
+
+    box-shadow:
+        0 18px 38px rgba(216,163,41,.45);
+
+}
+@media(max-width:760px){
+
+    .mission-stats{
+
+        grid-template-columns:1fr;
+
+    }
+
+    #missionTitle{
+
+        font-size:52px;
+
+    }
+
+    .mission-ending{
+
+        font-size:20px;
+
+    }
+
+    #returnMenuButton{
+
+        width:100%;
+
+    }
+
 }

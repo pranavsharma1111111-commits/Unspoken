@@ -27,8 +27,11 @@ game = GameManager()
 
 
 class MessageRequest(BaseModel):
-
+    
     message: str
+class ApiKeyRequest(BaseModel):
+
+        api_key: str
 
 
 @app.get("/")
@@ -40,7 +43,16 @@ def home():
 
     }
 
+@app.post("/set-api-key")
+def set_api_key(request: ApiKeyRequest):
 
+    game.set_api_key(request.api_key)
+
+    return {
+
+        "message": "API key saved successfully."
+
+    }
 @app.post("/start-game")
 def start_game():
 

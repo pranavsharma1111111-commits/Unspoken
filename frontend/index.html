@@ -29,8 +29,6 @@
 
 <div class="background-overlay"></div>
 
-<!-- ===================== MAIN MENU ===================== -->
-
 <div class="menu-container">
 
     <header>
@@ -63,13 +61,13 @@
 
         </button>
 
-        <button>
+        <button id="settingsButton">
 
-            <span class="icon">⚙</span>
+    <span class="icon">⚙</span>
 
-            <span>SETTINGS</span>
+    <span>SETTINGS</span>
 
-        </button>
+</button>
 
         <button>
 
@@ -91,7 +89,7 @@
 
         <small>
 
-            Version 0.1 Alpha
+            Version 0.1 Beta
 
         </small>
 
@@ -99,7 +97,6 @@
 
 </div>
 
-<!-- ===================== CASES OVERLAY ===================== -->
 
 <div id="casesOverlay" class="cases-overlay">
 
@@ -218,9 +215,6 @@
 
 </div>
 
-<!-- ========================================== -->
-<!--          BRIEFING OVERLAY                  -->
-<!-- ========================================== -->
 
 <div id="briefingOverlay" class="cases-overlay">
 
@@ -377,6 +371,117 @@
             ▶ START CASE
 
         </button>
+
+    </div>
+
+</div>
+
+<div id="settingsOverlay" class="overlay">
+
+    <div class="overlay-card settings-card">
+
+        <h2>
+
+            AI Settings
+
+        </h2>
+
+        <p class="settings-title">
+
+            Gemini API Key
+
+        </p>
+
+        <input
+            id="apiKeyInput"
+            type="password"
+            placeholder="Paste your Gemini API Key">
+
+        <div class="settings-box">
+
+            <p>
+
+                <strong>About</strong>
+
+            </p>
+
+            <p>
+
+                Unspoken uses Google's Gemini AI to power every conversation.
+
+                To keep this prototype free for everyone, you'll use your own Gemini API key instead of ours.
+
+            </p>
+
+        </div>
+
+        <div class="settings-box">
+
+            <p>
+
+                <strong>Privacy</strong>
+
+            </p>
+
+            <p>
+
+                Your API key is stored only in your browser and is used only to communicate directly with Google's Gemini API.
+
+                Unspoken does not collect, store, or transmit your API key.
+
+            </p>
+
+        </div>
+
+        <div class="settings-box">
+
+            <p>
+
+                <strong>Recommendation</strong>
+
+            </p>
+
+            <p>
+
+                We recommend creating a separate free Gemini API key specifically for Unspoken testing.
+
+                If you're using a shared computer, you can remove it after you're finished.
+
+            </p>
+
+        </div>
+
+        <a
+            class="api-link"
+            href="https://aistudio.google.com/app/apikey"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            Create a free Gemini API key at Google AI Studio →
+
+        </a>
+
+        <div class="overlay-buttons">
+
+            <button id="saveSettings">
+
+                Save
+
+            </button>
+
+            <button id="clearSettings">
+
+                Clear
+
+            </button>
+
+            <button id="closeSettings">
+
+                Close
+
+            </button>
+
+        </div>
 
     </div>
 

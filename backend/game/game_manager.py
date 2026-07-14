@@ -1,7 +1,3 @@
-import os
-
-from dotenv import load_dotenv
-
 from models.character import Character
 from models.case import Case
 from models.conversation_state import ConversationState
@@ -13,17 +9,25 @@ class GameManager:
 
     def __init__(self):
 
-        load_dotenv("../.env")
-
-        api_key = os.getenv("GEMINI_API_KEY")
-
-        self.engine = ConversationEngine(api_key)
+        self.engine = None
 
         self.character = None
         self.case = None
         self.state = None
 
+    def set_api_key(self, api_key):
+
+        self.engine = ConversationEngine(api_key)
+
     def start_game(self):
+
+        if self.engine is None:
+
+            return {
+
+                "error": "API key not configured."
+
+            }
 
         self.character = load_character("alex.json")
 
@@ -32,9 +36,13 @@ class GameManager:
         self.state = ConversationState()
 
         return {
+
             "message": "Game Started",
+
             "character": self.character.name,
+
             "case": self.case.title
+
         }
 
     def send_message(self, message):
