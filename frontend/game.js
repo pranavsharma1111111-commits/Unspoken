@@ -48,7 +48,7 @@ const maxTurns = 25;
 
 let gameEnded = false;
 
-const DEV_MODE = true;
+const DEV_MODE = false;
 
 window.addEventListener("load", initializeGame);
 
@@ -167,6 +167,16 @@ async function sendMessage(){
         );
 
         const data = await response.json();
+
+if(data.error){
+
+    hideTyping();
+
+    addSystemMessage(data.error);
+
+    return;
+
+}
 
         console.log(data);
 

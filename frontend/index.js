@@ -263,7 +263,7 @@ async function saveApiKey(){
     }
 
 }
-function loadApiKey(){
+async function loadApiKey(){
 
     const savedKey = localStorage.getItem(
 
@@ -271,9 +271,49 @@ function loadApiKey(){
 
     );
 
-    if(savedKey){
+    if(!savedKey){
 
-        apiKeyInput.value = savedKey;
+        return;
+
+    }
+
+    apiKeyInput.value = savedKey;
+
+    try{
+
+        await fetch(
+
+            "http://127.0.0.1:8000/set-api-key",
+
+            {
+
+                method:"POST",
+
+                headers:{
+
+                    "Content-Type":"application/json"
+
+                },
+
+                body:JSON.stringify({
+
+                    api_key:savedKey
+
+                })
+
+            }
+
+        );
+
+    }
+
+    catch(error){
+
+        console.log(
+
+            "Unable to restore API key."
+
+        );
 
     }
 

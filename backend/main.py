@@ -62,24 +62,34 @@ def start_game():
 @app.post("/send-message")
 def send_message(request: MessageRequest):
 
-    result = game.send_message(request.message)
+    try:
 
-    return {
+        result = game.send_message(request.message)
 
-        "reply": result["reply"],
+        return {
 
-        "mission_complete": result["evaluation"]["mission_complete"],
+            "reply": result["reply"],
 
-        "conversation_ended": result["evaluation"]["conversation_end"],
+            "mission_complete": result["evaluation"]["mission_complete"],
 
-        "state":{
+            "conversation_ended": result["evaluation"]["conversation_end"],
 
-            "trust":result["state"].trust,
+            "state":{
 
-            "frustration":result["state"].frustration,
+                "trust":result["state"].trust,
 
-            "current_turn":result["state"].current_turn
+                "frustration":result["state"].frustration,
+
+                "current_turn":result["state"].current_turn
+
+            }
 
         }
 
-    }
+    except Exception as error:
+
+        return {
+
+            "error": str(error)
+
+        }
