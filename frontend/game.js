@@ -38,6 +38,8 @@ const missionQuote = document.getElementById("missionQuote");
 
 const returnMenuButton = document.getElementById("returnMenuButton");
 
+const API_URL = "https://changingminds-production.up.railway.app";
+
 let trust = 50;
 
 let frustration = 0;
@@ -57,16 +59,11 @@ async function initializeGame(){
     try{
 
         await fetch(
-
-            "http://127.0.0.1:8000/start-game",
-
-            {
-
-                method:"POST"
-
-            }
-
-        );
+    `${API_URL}/start-game`,
+    {
+        method: "POST"
+    }
+);
 
         addSystemMessage(
 
@@ -143,28 +140,17 @@ async function sendMessage(){
     try{
 
         const response = await fetch(
-
-            "http://127.0.0.1:8000/send-message",
-
-            {
-
-                method:"POST",
-
-                headers:{
-
-                    "Content-Type":"application/json"
-
-                },
-
-                body:JSON.stringify({
-
-                    message:message
-
-                })
-
-            }
-
-        );
+    `${API_URL}/send-message`,
+    {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            message: message
+        })
+    }
+);
 
         const data = await response.json();
 
