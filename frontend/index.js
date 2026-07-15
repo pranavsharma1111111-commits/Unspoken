@@ -28,6 +28,8 @@ const clearSettingsButton = document.getElementById("clearSettings");
 
 const apiKeyInput = document.getElementById("apiKeyInput");
 
+const API_URL = "https://changingminds-production.up.railway.app";
+
 function openCases(){
 
     casesOverlay.classList.add("show");
@@ -214,7 +216,7 @@ async function saveApiKey(){
 
         const response = await fetch(
 
-            "http://127.0.0.1:8000/set-api-key",
+            `${API_URL}/set-api-key`,
 
             {
 
@@ -283,7 +285,7 @@ async function loadApiKey(){
 
         await fetch(
 
-            "http://127.0.0.1:8000/set-api-key",
+            `${API_URL}/set-api-key`,
 
             {
 
