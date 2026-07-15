@@ -39,7 +39,7 @@ def home():
 
     return {
 
-        "message": "Welcome to MINDRIFT"
+        "message": "Welcome to CHANGING MINDS"
 
     }
 
